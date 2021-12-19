@@ -1,0 +1,13 @@
+---
+title: "Reinforcement Learning for Optimal Day-Ahead Electricity Trading with Battery Storage - Case Study of Norway Electricity Market Data"
+author: "Peyman Kor"
+date: "8/30/2021"
+output: html_document
+---
+
+
+The coastal region of Europe has seen a growing interest in wind energy. A challenge with wind energy sources is handling the variability. A simple solution to handle this variability is to sell any electricity from a renewable source into the grid and use the tremendous power of the grid to handle this variability. However, there has been considerable interest in using storage (particularly battery storage) to handle variability in renewable energies. The battery storage provides flexibility to the energy provider. This flexibility can be utilized in the form of battery arbitrage, where a policy is trained on the decision to buy, store, and sell electricity to exploit variations in electricity spot prices. This approach is becoming an essential way of paying for expensive investments into grid-level storage. 
+
+In this work, elements of the Markov Decision Process (MDP) in the context of the battery storage problem are presented. The source of uncertainty in electricity price is quantified through the jump-diffusion model, and historical data were used to calibrate the model. In this work, We present Value Function Approximation (VFA) based on the Bellman optimality equation as a policy for decision in hand a day ahead.
+
+We show that policy trained using VFA on historical price data from the Norway market data is effective. The trained agent exploits the monotonicity of the value function to find a profit-generating policy for trading. In our case study, the method is tested on two large data sets: day-ahead prices from the NORDPOOL from 2019 and 2018. Finally, the VFA policies consistently generated more revenue than the rule-based heuristic strategies that we considered, confirming that a VFA approach approximating the current decision on future decisions is worthwhile. In this work, we discretized the state and decision space in a manner that the MDP problem can be solved in a computationally tractable way. Future work will apply the workflow to the high dimensional state-decision space in a computationally efficient way.

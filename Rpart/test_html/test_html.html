@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<!--
+Font-awesome icons ie github or twitter
+-->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/brands.css" integrity="sha384-n9+6/aSqa9lBidZMRCQHTHKJscPq6NW4pCQBiMmHdUCvPN8ZOg2zJJTkC7WIezWv" crossorigin="anonymous">
+
+<!--
+Google fonts api stuff
+-->
+
+
+
+<title>Reinforcement Learning for Optimal a Hour-Ahead Electricity Trading with Battery Storage</title>
+
+<script src="test_html_files/header-attrs-2.11/header-attrs.js"></script>
+
+
+
+
+
+<style>
+@page {
+size: 45in 38in;
+margin: 0;
+padding: 0;
+}
+body {
+margin: 0;
+font-size: 45px;
+width: 45in;
+height: 38in;
+padding: 0;
+text-align: justify;
+font-family: Palatino;
+}
+.poster_wrap {
+width: 45in;
+height: 38in;
+padding: 0cm;
+}
+.title_container {
+width: 100%;
+height: 15%;
+overflow: hidden;
+background-color: #0b4545;
+border: 0 solid #0b4545
+;
+}
+.logo_left {
+float: left;
+width: 10%;
+height: 100%;
+background-color: #0b4545;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.logo_right {
+float: right;
+width: 10%;
+height: 100%;
+background-color: #0b4545;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.poster_title {
+text-align: center;
+position: relative;
+float: left;
+width: 80%;
+height: 100%;
+color: #FFFFFF;
+top: 50%;
+transform: translateY(-50%);
+-webkit-transform: translateY(-50%);
+}
+#title {
+font-family: Palatino;
+}
+/* unvisited link */
+a:link {
+color: #008080;
+text-decoration: none;
+}
+.mybreak {
+  break-before: column;
+}
+/* visited link */
+a:visited {
+color: #008080;
+text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+color: #008080;
+text-decoration: none;
+}
+
+/* selected link */
+a:active {
+color: #008080;
+text-decoration: none;
+}
+.poster_body {
+-webkit-column-count: 3; /* Chrome, Safari, Opera */
+-moz-column-count: 3; /* Firefox */
+column-count: 3;
+-webkit-column-fill: auto;
+-moz-column-fill: auto;
+column-fill: auto;
+-webkit-column-rule-width: 1mm;
+-moz-column-rule-width: 1mm;
+column-rule-width: 1mm;
+-webkit-column-rule-style: dashed;
+-moz-column-rule-style: dashed;
+column-rule-style: dashed;
+-webkit-column-rule-color: #0b4545;
+-moz-column-rule-color: #0b4545;
+column-rule-color: #0b4545;
+column-gap: 1em;
+padding-left: 0.5em;
+padding-right: 0.5em;
+height: 100%;
+color: #000000
+background-color: #ffffff;
+}
+.poster_title h1 {
+font-size: 75pt;
+margin: 0;
+border: 0;
+font-weight: normal;
+}
+.poster_body_wrap{
+width: 45in;
+height: calc(100% - 17%);
+padding-top: calc(38in * 0.01);
+padding-bottom: calc(38in * 0.01);
+background-color: #ffffff;
+}
+.poster_title h3 {
+color: #ffffff;
+font-size: 50pt;
+margin: 0;
+border: 0;
+font-weight: normal;
+}
+.poster_title h3 > sup {
+  font-size: 35pt;
+  margin-left: 0.02em;
+}
+.poster_title h5 {
+color: #FFFFFF;
+font-size: 35pt;
+margin: 0;
+border: 0;
+font-weight: normal;
+}
+img {
+margin-top: 0;
+margin-bottom: 0;
+}
+.section {
+  padding: 0.2em;
+}
+.poster_body h1 {
+text-align: center;
+color: #FFFFFF;
+font-size: 65pt;
+border: 2mm solid #0b4545;
+background-color: #0b4545;
+border-radius: 4mm 0mm;
+margin-top: 2mm;
+margin-bottom: 2mm;
+font-weight: normal;
+}
+.poster_body h2 {
+color: #000000;
+font-size: 40pt;
+padding-left: 4mm;
+font-weight: normal;
+}
+.span {
+width: 200%;
+}
+/* center align leaflet map,
+from https://stackoverflow.com/questions/52112119/center-leaflet-in-a-rmarkdown-document */
+.html-widget {
+margin: auto;
+position: sticky;
+margin-top: 2cm;
+margin-bottom: 2cm;
+}
+.leaflet.html-widget.html-widget-static-bound.leaflet-container.leaflet-touch.leaflet-fade-anim.leaflet-grab.leaflet-touch-drag.leaflet-touch-zoom {
+position: sticky;
+width: 100%;
+}
+pre.sourceCode.r, pre.sourceCode.python {
+background-color: #ffffff20;
+border: solid #008080 1mm;
+border-radius: 0.5em;
+padding: 4mm;
+margin: auto;
+margin-top: 1em;
+margin-bottom: 1em;
+/* align-items: center; */
+}
+div.sourceCode {
+background-color: transparent;
+width: 85%;
+margin-left: auto;
+margin-right: auto;
+}
+code.sourceCode.r, code.sourceCode.python {
+background-color: transparent;
+font-size: 20pt;
+border-radius: 2mm;
+}
+code {
+font-size: 25pt;
+font-family: monospace;
+background-color: #00808024;
+color: #008080;
+padding: 1.2mm;
+line-height: 1;
+border-radius: 2mm;
+}
+.caption {
+font-size: 20pt;
+}
+.table caption {
+font-size: 20pt;
+padding-bottom: 3mm;
+
+}
+code {
+font-size: 1em;
+font-family: monospace;
+background-color: #00808024;
+color: #0b4545;
+padding: 1.2mm;
+border-radius: 2mm;
+}
+.poster_title code {
+font-size: 1em;
+}
+table {
+font-size: 40px;
+margin: auto;
+border-top: 3px solid #666;
+border-bottom: 3px solid #666;
+}
+table thead th {
+border-bottom: 3px solid #ddd;
+}
+td {
+padding: 8px;
+}
+th {
+padding: 15px;
+}
+caption {
+margin-bottom: 10px;
+}
+.poster_body p {
+margin-right: 4mm;
+margin-left: 4mm;
+margin-top: 6mm;
+margin-bottom: 10mm;
+color: #000000
+}
+.poster_body ol {
+margin-right: 4mm;
+margin-left: 4mm;
+}
+#ul {
+margin-right: 4mm;
+margin-left: 4mm;
+}
+.references p {
+font-size: 20pt;
+}
+.orcid img {
+  width: 1em;
+}
+</style>
+</head>
+<body>
+
+
+<div class="poster_wrap">
+<div class="title_container">
+<!-- Left Logo  -->
+<div class="logo_left">
+<img src=https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/UiS_mainnegative_CMYK_English.svg/1024px-UiS_mainnegative_CMYK_English.svg.png style="width: 80%">
+</div>
+<!-- Poster Title -->
+<div class= "poster_title">
+<h1 id="title">Reinforcement Learning for Optimal a Hour-Ahead Electricity Trading with Battery Storage</h1>
+<h3 id="author">Peyman Kor<sup>1</sup></h3>
+<h5 id="affiliation"><sup>1</sup> Department of Energy Resources, University of Stavanger, Stavanger, Norway</h5>
+</div>
+<!-- Right Logo  -->
+<div class="logo_right">
+<img src=https://pbs.twimg.com/profile_images/1231931314753953792/jnaJg-OS_400x400.jpg style="width: 80%">
+</div>
+</div>
+
+<div class='poster_body_wrap'>
+<div class='poster_body'>
+<div id="introduction" class="section level1">
+<h1>Introduction</h1>
+<ul>
+<li>The coastal region of Europe has seen a growing interest in wind energy. A challenge with wind energy sources is handling the variability.</li>
+<li>A simple solution to handle this variability is to sell any electricity from a renewable source into the grid and use the tremendous power of the grid to handle this variability.</li>
+<li>However, there has been considerable interest in using storage (particularly battery storage) to handle variability in renewable energies. The battery storage provides flexibility to the energy provider.</li>
+</ul>
+<div id="objectives" class="section level2">
+<h2>Objectives</h2>
+<ol style="list-style-type: decimal">
+<li>Illustrate and introduce the workflow for solving sequential Decision problems</li>
+<li>Present Value Function Approximation (VFA) based on the Bellman optimality equation as a policy for decision in hand.</li>
+</ol>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:standard-plot1"></span>
+<img src="test2.png" alt="The Electricity Storage Decision Schematics" width="80%" />
+<p class="caption">
+Figure 1: The Electricity Storage Decision Schematics
+</p>
+</div>
+</div>
+</div>
+<div id="methods" class="section level1">
+<h1>Methods</h1>
+<p><code>Lookahead Policy</code> is optimal:</p>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:standard-plot12"></span>
+<img src="tree.png" alt="Lookahead Policy as Decision Tree" width="80%" />
+<p class="caption">
+Figure 2: Lookahead Policy as Decision Tree
+</p>
+</div>
+</div>
+<div id="results" class="section level1">
+<h1>Results</h1>
+<p><strong>Visual Illustration of Concept:</strong></p>
+<ul>
+<li>Battery could be fully charged Or Discharged, R t = [1,0]</li>
+<li>The Electricity Price could have three possible scenario, p=[1,2,3]</li>
+<li>The Electricity price could decrease or increase with ,∆p = [−0.5,0.5] each with
+chance.</li>
+<li>The number of time steps is 3, T = [0,1,2]</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:standard-plot133"></span>
+<img src="full_tree.png" alt="Lookahead Policy Computation, Small Example" width="100%" />
+<p class="caption">
+Figure 3: Lookahead Policy Computation, Small Example
+</p>
+</div>
+<div id="two-data-sets-price-on-week-1-2005-as-train-price-on-week-1-2006-to-test" class="section level3">
+<h3>Two data sets, price on Week 1 2005 as train, price on Week 1 2006 to test:</h3>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-hist-test"></span>
+<img src="test_html_files/figure-html/plot-hist-test-1.png" alt="Electricity price at same week, two years" width="100%" />
+<p class="caption">
+Figure 4: Electricity price at same week, two years
+</p>
+</div>
+</div>
+<div id="distribution-of-hourly-price-change-in-training-data" class="section level3">
+<h3>Distribution of Hourly Price Change in Training data:</h3>
+<ul>
+<li>The change in price is needed to model uncertainty in price.</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:plot-change"></span>
+<img src="price_change.png" alt="Sort of change in hourly price" width="100%" />
+<p class="caption">
+Figure 5: Sort of change in hourly price
+</p>
+</div>
+</div>
+<div id="how-stored-electricity-is-traded-sell-and-buy-to-grid." class="section level3">
+<h3>How stored electricity is traded (sell and buy to grid).</h3>
+<ul>
+<li>At each time step, the decision is made with taking into account all the <code>Future</code> decisions:</li>
+</ul>
+<div class="figure" style="text-align: center"><span style="display:block;" id="fig:fin-plot"></span>
+<img src="test_html_files/figure-html/fin-plot-1.png" alt="Buying and Selling Time of Battery and, Electricty Price in lower" width="100%" />
+<p class="caption">
+Figure 6: Buying and Selling Time of Battery and, Electricty Price in lower
+</p>
+</div>
+<ul>
+<li>The final contribution (profit) with 1 MWh, is <code>516.3</code> USD per week.</li>
+</ul>
+<!-- **Norway Electricity data:**~ -->
+<!-- # Next Steps -->
+<!-- - In this work, we discretized the state and decision space in a manner that the MDP problem can be solved in a computationally tractable way.  -->
+<!-- - Future work will apply the workflow to the high dimensional state-decision space in a computationally efficient way. -->
+</div>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
+<ul>
+<li>We show that policy trained using Lookahead policy on historical price data consistently generated profit revenue for decision-maker.</li>
+<li>The next step is to apply workflow for more difficult, stochastic spot electricity prices.</li>
+</ul>
+</div>
+</div>
+</div>
+
+</div>
+
+
+
+</body>
+</html>
